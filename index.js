@@ -4,7 +4,7 @@ const randomJoke = () => {
     const jokeElement = document.getElementById('joke');
     
     const response = fetch(url)
-        .then(data => data.json())
+        .then(bits => bits.json())
         .then(jokeData =>  {
             jokeElement.textContent = jokeData.setup;
 
@@ -39,8 +39,8 @@ const pokemon = () => {
 
     fetch(url)
         .then(response => response.json())
-        .then(data => {
-            gambarpokemon.src = data.sprites.front_default;
+        .then(output => {
+            gambarpokemon.src = output.sprites.front_default;
             gambarpokemon.style.display = 'block';
             gambarpokemon.style.width = '150px';
             gambarpokemon.style.backgroundColor = 'orange';
@@ -52,22 +52,22 @@ buttons.addEventListener('click', pokemon);
 // fake store products
 fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
-    .then(data => {
+    .then(nilai => {
 
         let result = '';
 
-        data.map((item) => {
+        nilai.map((items) => {
             
         result = `<tr>
-                    <td>${item.title}</td>
-                    <td>${item.description}</td>
-                    <td>${item.price}</td>
-                    <td><img src="${item.image}"/></td>
+                    <td>${items.title}</td>
+                    <td>${items.description}</td>
+                    <td>${items.price}</td>
+                    <td><img src="${items.image}"/></td>
                 </tr>
                  `;
         });
 
-        document.getElementById('table_body').innerHTML = result;
+        // document.getElementById('table_body').innerHTML = result;
     })
 
 // chuck quote: then method and arrow function
@@ -76,26 +76,26 @@ const randomquote = () => {
 
     fetch('https://api.chucknorris.io/jokes/random')
     .then(response => response.json())
-    .then(data => {
-        random.textContent = data.value;
+    .then(item => {
+        // random.textContent = item.value;
     })
     
 }
-btns.addEventListener('click', randomquote)
+// btns.addEventListener('click', randomquote)
 randomquote();
 
 // chuck quote: async and regular function
-async function randomquote(){
+async function randomquotes(){
     const random = document.getElementById('random');
     const url = 'https://api.chucknorris.io/jokes/random';
 
     const fetchdata = await fetch(url)
         .then(response => response.json())
-        .then(data => {
-            random.textContent = data.value;
+        .then(value => {
+            random.textContent = value.value;
         })
 }
-btns.addEventListener('click', randomquote);
+// btns.addEventListener('click', randomquotes);
 
 // yes or no
 const yesorno = async () => {
