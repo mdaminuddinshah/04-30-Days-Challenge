@@ -50,52 +50,54 @@ const pokemon = () => {
 buttons.addEventListener('click', pokemon);
 
 // fake store products
-// fetch('https://fakestoreapi.com/products')
-//     .then(response => response.json())
-//     .then(data => {
+fetch('https://fakestoreapi.com/products')
+    .then(response => response.json())
+    .then(data => {
 
-//         let result = '';
+        let result = '';
 
-//         data.map((item) => {
+        data.map((item) => {
             
-//         result = `<tr>
-//                     <td>${item.title}</td>
-//                     <td>${item.description}</td>
-//                     <td>${item.price}</td>
-//                     <td><img src="${item.image}"/></td>
-//                 </tr>
-//                  `;
-//         });
+        result = `<tr>
+                    <td>${item.title}</td>
+                    <td>${item.description}</td>
+                    <td>${item.price}</td>
+                    <td><img src="${item.image}"/></td>
+                </tr>
+                 `;
+        });
 
-//         document.getElementById('table_body').innerHTML = result;
-//     })
+        document.getElementById('table_body').innerHTML = result;
+    })
 
-// chuck quote
-// const randomquote = () => {
-//     const random = document.getElementById('random');
+// chuck quote: then method and arrow function
+const randomquote = () => {
+    const random = document.getElementById('random');
 
-//     fetch('https://api.chucknorris.io/jokes/random')
-//     .then(response => response.json())
-//     .then(data => {
-//         random.textContent = data.value;
-//     })
+    fetch('https://api.chucknorris.io/jokes/random')
+    .then(response => response.json())
+    .then(data => {
+        random.textContent = data.value;
+    })
     
-// }
-// btns.addEventListener('click', randomquote)
-// randomquote();
+}
+btns.addEventListener('click', randomquote)
+randomquote();
 
-// async function randomquote(){
-//     const random = document.getElementById('random');
-//     const url = 'https://api.chucknorris.io/jokes/random';
+// chuck quote: async and regular function
+async function randomquote(){
+    const random = document.getElementById('random');
+    const url = 'https://api.chucknorris.io/jokes/random';
 
-//     const fetchdata = await fetch(url)
-//         .then(response => response.json())
-//         .then(data => {
-//             random.textContent = data.value;
-//         })
-// }
-// btns.addEventListener('click', randomquote);
+    const fetchdata = await fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            random.textContent = data.value;
+        })
+}
+btns.addEventListener('click', randomquote);
 
+// yes or no
 const yesorno = async () => {
     const url = 'https://yesno.wtf/api';
     const yes = document.getElementById('yes');
