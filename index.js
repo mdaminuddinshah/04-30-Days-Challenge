@@ -1,26 +1,3 @@
-// pick a pokemon
-// async function fetchpokemon(){
-
-//     try{
-//         const pokemonname = document.getElementById('pokemonname').value.toLowerCase();
-//         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonname}`;
-//         const response = await fetch(url);
-
-//         const data = await response.json();
-//         const pokemonPicture = data.sprites.front_default;
-//         const imgElement = document.getElementById('gambarpokemon');
-
-//         imgElement.src = pokemonPicture;
-//         imgElement.style.display = 'block';
-//         imgElement.style.width = '150px';
-//         imgElement.style.backgroundColor = 'orange';
-//         imgElement.style.borderRadius = '90px';
-//     }
-//     catch(err){
-//         console.error(err);
-//     }
-// }
-
 // random joke
 const randomJoke = () => {
     const url = 'https://v2.jokeapi.dev/joke/Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
@@ -36,31 +13,64 @@ const randomJoke = () => {
 }
 btn.addEventListener('click', randomJoke);
 
+// PICK A POKEMON: USING ASYNC AND AWAIT
+/** 
+const pokemon = async () => {
+    const pokemonname = document.getElementById('pokemonname').value.toLowerCase();
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonname}`;
+    const imgElement = document.getElementById('gambarpokemon')
 
+    const grab = await fetch(url);
+    const response = await grab.json();
+    const gambar = response.sprites.front_default;
+
+    imgElement.src = gambar;
+    imgElement.style.display = 'block';
+
+}
+buttons.addEventListener('click', pokemon);
+*/
+
+// PICK A POKEMON: USING THEN() METHOD
+const pokemon = () => {
+    const pokemonname = document.getElementById('pokemonname').value.toLowerCase();
+    const gambarpokemon = document.getElementById('gambarpokemon');
+    const url =  `https://pokeapi.co/api/v2/pokemon/${pokemonname}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            gambarpokemon.src = data.sprites.front_default;
+            gambarpokemon.style.display = 'block';
+            gambarpokemon.style.width = '150px';
+            gambarpokemon.style.backgroundColor = 'orange';
+            gambarpokemon.style.borderRadius = '90px';
+        })
+}
+buttons.addEventListener('click', pokemon);
 
 // fake store products
-fetch('https://fakestoreapi.com/products')
-    .then(response => response.json())
-    .then(data => {
+// fetch('https://fakestoreapi.com/products')
+//     .then(response => response.json())
+//     .then(data => {
 
-        let result = '';
+//         let result = '';
 
-        data.map((item) => {
+//         data.map((item) => {
             
-        result = `<tr>
-                    <td>${item.title}</td>
-                    <td>${item.description}</td>
-                    <td>${item.price}</td>
-                    <td><img src="${item.image}"/></td>
-                </tr>
-                 `;
-        });
+//         result = `<tr>
+//                     <td>${item.title}</td>
+//                     <td>${item.description}</td>
+//                     <td>${item.price}</td>
+//                     <td><img src="${item.image}"/></td>
+//                 </tr>
+//                  `;
+//         });
 
-        document.getElementById('table_body').innerHTML = result;
-    })
+//         document.getElementById('table_body').innerHTML = result;
+//     })
 
-// quote
-
+// chuck quote
 // const randomquote = () => {
 //     const random = document.getElementById('random');
 
@@ -74,71 +84,17 @@ fetch('https://fakestoreapi.com/products')
 // btns.addEventListener('click', randomquote)
 // randomquote();
 
-async function randomquote(){
-    const random = document.getElementById('random');
-    const url = 'https://api.chucknorris.io/jokes/random';
+// async function randomquote(){
+//     const random = document.getElementById('random');
+//     const url = 'https://api.chucknorris.io/jokes/random';
 
-    const fetchdata = await fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            random.textContent = data.value;
-        })
-}
-btns.addEventListener('click', randomquote);
-
-
-// async function fetchpokemon(){
-
-//     try{
-//         const pokemonname = document.getElementById('pokemonname').value.toLowerCase();
-//         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonname}`;
-//         const response = await fetch(url);
-
-//         const data = await response.json();
-//         const pokemonPicture = data.sprites.front_default;
-//         const imgElement = document.getElementById('gambarpokemon');
-
-//         imgElement.src = pokemonPicture;
-//         imgElement.style.display = 'block';
-//         imgElement.style.width = '150px';
-//         imgElement.style.backgroundColor = 'orange';
-//         imgElement.style.borderRadius = '90px';
-//     }
-//     catch(err){
-//         console.error(err);
-//     }
+//     const fetchdata = await fetch(url)
+//         .then(response => response.json())
+//         .then(data => {
+//             random.textContent = data.value;
+//         })
 // }
-
-// const pokemon = async () => {
-//     const pokemonname = document.getElementById('pokemonname').value.toLowerCase();
-//     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonname}`;
-//     const imgElement = document.getElementById('gambarpokemon')
-
-//     const grab = await fetch(url);
-//     const response = await grab.json();
-//     const gambar = response.sprites.front_default;
-
-//     imgElement.src = gambar;
-//     imgElement.style.display = 'block';
-
-// }
-// buttons.addEventListener('click', pokemon);
-
-const pokemon = () => {
-    const pokemonname = document.getElementById('pokemonname').value.toLowerCase();
-    const gambarpokemon = document.getElementById('gambarpokemon');
-    const url =  `https://pokeapi.co/api/v2/pokemon/${pokemonname}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            gambarpokemon.src = data.sprites.front_default;
-            gambarpokemon.style.display = 'block';
-        })
-}
-buttons.addEventListener('click', pokemon);
-
-// https://api.quotable.io/random
+// btns.addEventListener('click', randomquote);
 
 const yesorno = async () => {
     const url = 'https://yesno.wtf/api';
@@ -146,9 +102,9 @@ const yesorno = async () => {
     const answers = document.getElementById('answer');
 
     const response = await fetch(url);
-    console.log(response);
+    // console.log(response);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     answers.textContent = `( ${data.answer} )`;
 

@@ -1,0 +1,49 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(240, 230, 249);
+    height: auto;
+}
+#patrick {
+    border-radius: 100px;
+    box-shadow: 6px 6px 0 0 rgba(1,1,1,0.3);
+}
+#patrick:hover {
+    border: 3px solid rgba(1,1,1,0.3);
+}
+#pokemon {
+    background-color: orangered;
+}
+.input {
+    background-color: orangered;
+}
+.list {
+    background-color: rgb(91, 245, 237);
+}
+.joke {
+    box-shadow: 7px 7px 0 0 rgba(1,1,1,0.3);
+}
+.joke:hover{
+    border: 2px solid rgba(1,1,1,0.5);
+}
+.pokemonShadow {
+    box-shadow: 7px 7px 0 0 rgba(1,1,1,0.3);
+    border-radius: 5px;
+}
+.pokemonShadow:hover {
+    border: 2px solid rgba(1,1,1,0.5);
+}
+.yesno {
+    box-shadow: 7px 7px 0 0 rgba(1,1,1,0.3);
+}
+.yesno:hover {
+    border: 2px solid rgba(1,1,1,0.5);
+}
+#buttons, #pokemonname, #btn, #yesbtn {
+    box-shadow: 4px 4px 0 0 rgba(1,1,1,0.3);
+}
+#buttons:hover, #pokemonname:hover, #btn:hover, #yesbtn:hover {
+    border: 2px solid rgba(255,255,255,0.8);
+}
